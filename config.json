@@ -1,0 +1,14 @@
+{
+      "listeners": {
+          "127.0.0.1:8085": {
+              "pass": "applications/wasm"
+          }
+      },
+
+      "applications": {
+          "wasm": {
+              "type": "wasm-wasi-http",
+              "component": "/path/to/power-spin-rs/application/app-component.wasm"
+          }
+      }
+  }
