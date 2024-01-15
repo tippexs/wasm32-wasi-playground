@@ -1,7 +1,5 @@
 use spin_sdk::http::{IntoResponse, Response, Json};
 use spin_sdk::http_component;
-
-// Create a Struct to parse the incomming JSON Body
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]

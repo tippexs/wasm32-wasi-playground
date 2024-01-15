@@ -13,6 +13,46 @@ Note: By now, this is an optional step and not needed to work with this tutorial
 Make sure `libssl-dev` and `pkg-config` is installed on your system
 
 
+# Create the Unit Language Module for 1.31.1
+
+Checkout and Clone the sources from 1.31.1
+
+```bash
+git clone -b 1.31.1 https://github.com/nginx/unit
+```
+
+Apply the patch
+```bash
+git apply wasm-wasi-http.diff
+```
+
+Configure Unit and the Module. Make sure Unit is configured with the same configure command as the current package.
+```bash
+./configure
+make
+```
+
+Pre-Req for the cargo steps.
+
+```bash
+make build/src/nxt_unit.o
+```
+
+Build the wasm-wasi-http module
+```bash
+cargo build --release --manifest-path src/wasm-wasi-http/Cargo.toml
+```
+
+This will build the Unit WebAssembly Wasi Language Module. This can now be copied into Units module directory. Make sure the target module name is correct.
+In the Unit source directory issue
+
+```
+cp src/wasm-wasi-http/target/release/libnxt_wasmtime.so /usr/lib/unit/modules/dir/wasmtime.unit.so
+```
+
+The next time Unit starts it will pick up the wasmtime language module.
+
+
 # The Rust Project
 
 The project source code can be found in the `application` directory and was inspired by
