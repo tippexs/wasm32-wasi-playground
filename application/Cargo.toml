@@ -3,6 +3,10 @@ name = "application"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata.component]
+package = "component:application"
+adapter = "./wasi_snapshot_preview1.reactor.wasm"
+
 [lib]
 crate-type = [ "cdylib" ]
 

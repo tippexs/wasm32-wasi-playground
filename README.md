@@ -1,16 +1,21 @@
 # Deliverables
 
-- [ ] Unit with wasm-wasi support for snapshot 18-10-2023 including build steps
+- [x] Unit with wasm-wasi support for snapshot 18-10-2023 including build steps
     Build the module as a patch from 1.31.1! 
-- [ ] Build steps for wasm component binary - power.rs -> power-component.rs
-- [ ] Unit example configuration
-- [ ] wasmtime serve command
+- [x] Build steps for wasm component binary - power.rs -> power-component.rs
+- [x] Unit example configuration
+- [x] wasmtime serve command
 
 # Rust Ecosystem
 
 ## Installation of `cargo component`
 Note: By now, this is an optional step and not needed to work with this tutorial.
 Make sure `libssl-dev` and `pkg-config` is installed on your system
+
+To install `cargo-component` issue
+```bash
+cargo install cargo-component
+```
 
 
 # Create the Unit Language Module for 1.31.1
@@ -74,8 +79,18 @@ wasm-tools can be installed using cargo as well.
 ```bash
 cargo install wasm-tools
 ```
-
 Now you should see a `app-component.wasm` in your `application` directory. This component can now be hosted on wasmtime-v14 AND NGINX Unit.
+
+## Use `cargo component` instead of  `wasm-tools`
+More Information check [Zulip Chat](https://bytecodealliance.zulipchat.com/#narrow/stream/407292-cargo-component/topic/.E2.9C.94.20Create.20Component.20from.20Rust.20Example)
+
+Another way to build the component is to use `cargo component`. As mentioned above `cargo-component` must be installed first.
+
+To build the Wasm component in a single build step without having the need of `wasm-tools` type
+```bash
+cargo component build --release
+```
+The Wasm component will be availabe as `target/wasm32-wasi/release/application.wasm`
 
 # Run on wasmtime
 
