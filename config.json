@@ -8,7 +8,7 @@
       "applications": {
           "wasm": {
               "type": "wasm-wasi-http",
-              "component": "/path/to/power-spin-rs/application/app-component.wasm"
+              "component": "[PWD]/application/target/wasm32-wasi/release/application.wasm"
           }
       }
   }
