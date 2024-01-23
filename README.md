@@ -69,6 +69,17 @@ The project source code can be found in the `application` directory and was insp
 
 Navigate into `application`
 
+## Build using `cargo component`
+More Information check [Zulip Chat](https://bytecodealliance.zulipchat.com/#narrow/stream/407292-cargo-component/topic/.E2.9C.94.20Create.20Component.20from.20Rust.20Example)
+
+Another way to build the component is to use `cargo component`. As mentioned above `cargo-component` must be installed first.
+
+To build the Wasm component in a single build step without having the need of `wasm-tools` type
+```bash
+cargo component build --release
+```
+The Wasm component will be availabe as `target/wasm32-wasi/release/application.wasm`
+
 ## Build using `wasm-tools`
 
 To build the Wasm binary issue
@@ -87,16 +98,6 @@ cargo install wasm-tools
 ```
 Now you should see a `app-component.wasm` in your `application` directory. This component can now be hosted on wasmtime-v14 AND NGINX Unit.
 
-## Build using `cargo component` instead of  `wasm-tools`
-More Information check [Zulip Chat](https://bytecodealliance.zulipchat.com/#narrow/stream/407292-cargo-component/topic/.E2.9C.94.20Create.20Component.20from.20Rust.20Example)
-
-Another way to build the component is to use `cargo component`. As mentioned above `cargo-component` must be installed first.
-
-To build the Wasm component in a single build step without having the need of `wasm-tools` type
-```bash
-cargo component build --release
-```
-The Wasm component will be availabe as `target/wasm32-wasi/release/application.wasm`
 
 # Run on wasmtime
 

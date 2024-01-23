@@ -19,6 +19,13 @@ fn math_power_off(req: http::Request<Json<Operands>>) -> anyhow::Result<impl Int
     let mut r: Resp = Resp {result: 0.00};
     let o = req.body();
     o.operands.iter().for_each(|x| { r.result = if r.result == 0.0 { *x } else { f64::powf(r.result, *x) } });
+    
+    let res_str = serde_json::to_string(&r)?;
 
-    Ok(Response::new(200, serde_json::to_string(&r)?))
+    Ok(Response::builder()
+    .status(200)
+    .header("Content-Type", "application/json")
+    .header("Content-Length", res_str.len().to_string())
+    .body(res_str)
+    .build())
 }
