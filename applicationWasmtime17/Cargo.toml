@@ -1,0 +1,20 @@
+[package]
+name = "application"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.component]
+package = "component:application"
+adapter = "./wasi_snapshot_preview1.reactor.wasm"
+
+[lib]
+crate-type = [ "cdylib" ]
+
+[dependencies]
+anyhow = "1"
+http = "0.2.9"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+spin-sdk = "2.2.0"
+
+[workspace]
