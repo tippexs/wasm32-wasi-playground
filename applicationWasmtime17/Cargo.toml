@@ -5,7 +5,7 @@ edition = "2021"
 
 [package.metadata.component]
 package = "component:application"
-adapter = "./wasi_snapshot_preview1.reactor.wasm"
+adapter = "./wasi_snapshot_preview1.reactor.wasm.1"
 
 [lib]
 crate-type = [ "cdylib" ]
